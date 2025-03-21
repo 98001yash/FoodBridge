@@ -2,11 +2,9 @@ package com.company.FoodBridgeApplication.FoodBridge.enums;
 
 public enum DonationStatus {
 
-    REQUESTED,
-    APPROVED,
-    REJECTED,
-    IN_TRANSIT,
+   AVAILABLE,
+    ASSIGNED,
     COMPLETED,
-    CANCELLED
+    EXPIRED
 
 }
