@@ -1,6 +1,7 @@
 package com.company.FoodBridgeApplication.FoodBridge.entities;
 
 
+import com.company.FoodBridgeApplication.FoodBridge.enums.RequestStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +28,7 @@ public class FoodRequest {
     private FoodReceiver receiver;
 
     @ManyToOne
-    @JoinColumn(name = "donation_idit ")
+    @JoinColumn(name = "donation_id")
     private FoodDonation foodDonation;
 
 
