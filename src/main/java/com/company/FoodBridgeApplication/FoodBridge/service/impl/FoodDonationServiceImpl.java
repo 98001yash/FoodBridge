@@ -3,8 +3,10 @@ package com.company.FoodBridgeApplication.FoodBridge.service.impl;
 
 import com.company.FoodBridgeApplication.FoodBridge.dtos.FoodDonationDto;
 import com.company.FoodBridgeApplication.FoodBridge.entities.FoodDonation;
+import com.company.FoodBridgeApplication.FoodBridge.entities.User;
 import com.company.FoodBridgeApplication.FoodBridge.exceptions.ResourceNotFoundException;
 import com.company.FoodBridgeApplication.FoodBridge.repository.FoodDonationRepository;
+import com.company.FoodBridgeApplication.FoodBridge.repository.UserRepository;
 import com.company.FoodBridgeApplication.FoodBridge.service.FoodDonationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,16 +23,23 @@ public class FoodDonationServiceImpl implements FoodDonationService {
 
     private final FoodDonationRepository foodDonationRepository;
     private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
 
 
     @Override
     public FoodDonationDto addDonation(FoodDonationDto foodDonationDto) {
-       log.info("Adding a new food donation: {}", foodDonationDto);
+        log.info("Adding a new food donation: {}", foodDonationDto);
+
+        User donor = userRepository.findById(foodDonationDto.getDonorId())
+                .orElseThrow(() -> new RuntimeException("Donor not found"));
 
         FoodDonation foodDonation = modelMapper.map(foodDonationDto, FoodDonation.class);
+        foodDonation.setDonor(donor); // Set donor
+
         FoodDonation savedDonation = foodDonationRepository.save(foodDonation);
         return modelMapper.map(savedDonation, FoodDonationDto.class);
     }
+
 
     @Override
     public List<FoodDonationDto> getAllDonations() {

@@ -1,6 +1,7 @@
 package com.company.FoodBridgeApplication.FoodBridge.entities;
 
 
+import com.company.FoodBridgeApplication.FoodBridge.enums.ReceiverType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,5 +26,6 @@ public class FoodReceiver {
     private String location;
 
     @Enumerated(EnumType.STRING)
-    private ReceiverType receiverType;
+    private  ReceiverType receiverType;
+
 }

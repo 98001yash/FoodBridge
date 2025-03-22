@@ -2,9 +2,11 @@ package com.company.FoodBridgeApplication.FoodBridge.entities;
 
 
 import com.company.FoodBridgeApplication.FoodBridge.enums.DonationStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,7 +26,9 @@ public class FoodDonation {
     private User donor;
     private String foodType;
     private String pickupLocation;
-    private LocalDateTime expiryDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate expiryDate;
 
     @Enumerated(EnumType.STRING)
     private DonationStatus status;
