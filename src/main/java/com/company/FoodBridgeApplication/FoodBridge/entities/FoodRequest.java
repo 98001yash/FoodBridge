@@ -3,10 +3,7 @@ package com.company.FoodBridgeApplication.FoodBridge.entities;
 
 import com.company.FoodBridgeApplication.FoodBridge.enums.RequestStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "food_request")
+@Builder
 public class FoodRequest {
 
 
