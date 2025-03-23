@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class FoodReceiverDto {
 
     private Long id;
-    private String receiverName;
+    private String name;
     private String contact;
 }

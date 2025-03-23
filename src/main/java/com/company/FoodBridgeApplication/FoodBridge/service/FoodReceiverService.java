@@ -3,6 +3,7 @@ package com.company.FoodBridgeApplication.FoodBridge.service;
 
 import com.company.FoodBridgeApplication.FoodBridge.dtos.FoodReceiverDto;
 import com.company.FoodBridgeApplication.FoodBridge.entities.FoodReceiver;
+import com.company.FoodBridgeApplication.FoodBridge.enums.ReceiverType;
 import com.company.FoodBridgeApplication.FoodBridge.exceptions.ResourceNotFoundException;
 import com.company.FoodBridgeApplication.FoodBridge.repository.FoodReceiverRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,20 +19,26 @@ public class FoodReceiverService {
     private final FoodReceiverRepository foodReceiverRepository;
     private final ModelMapper modelMapper;
 
+    public FoodReceiverDto registerReceiver(FoodReceiverDto foodReceiverDto) {
+        log.info("Registering a new food receiver: {}", foodReceiverDto);
 
-    public FoodReceiverDto registerReceiver(FoodReceiverDto foodReceiverDto){
-        log.info("Registering new food Receiver: {}", foodReceiverDto);
+        // Manually mapping fields
+        FoodReceiver foodReceiver = new FoodReceiver();
+        foodReceiver.setName(foodReceiverDto.getName());
+        foodReceiver.setContact(foodReceiverDto.getContact());
 
-        FoodReceiver foodReceiver = modelMapper.map(foodReceiverDto, FoodReceiver.class);
+        // Assign default values for missing fields
+        foodReceiver.setEmail(foodReceiverDto.getName().toLowerCase().replace(" ", "_") + "@example.com"); // Temporary email
+        foodReceiver.setLocation("Unknown"); // Default location
+        foodReceiver.setReceiverType(ReceiverType.INDIVIDUAL); // Default type
+
         FoodReceiver savedReceiver = foodReceiverRepository.save(foodReceiver);
-
         return modelMapper.map(savedReceiver, FoodReceiverDto.class);
     }
 
-
-    public FoodReceiverDto getReceiverById(Long id){
-        FoodReceiver foodReceiver = foodReceiverRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Food receiver not found"));
-        return modelMapper.map(foodReceiver, FoodReceiverDto.class);
+    public FoodReceiverDto getReceiverById(Long id) {
+        FoodReceiver receiver = foodReceiverRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Receiver not found."));
+        return modelMapper.map(receiver, FoodReceiverDto.class);
     }
 }

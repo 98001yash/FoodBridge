@@ -19,13 +19,16 @@ public class FoodReceiver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @Column(unique = true)
     private String email;
+
     private String location;
 
-    @Enumerated(EnumType.STRING)
-    private  ReceiverType receiverType;
+    private String contact;  // Add this field
 
+    @Enumerated(EnumType.STRING)
+    private ReceiverType receiverType;
 }
