@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -29,6 +28,9 @@ public class FoodDonation {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate expiryDate;
+
+    private Double latitude;
+    private Double longitude;
 
     @Enumerated(EnumType.STRING)
     private DonationStatus status;

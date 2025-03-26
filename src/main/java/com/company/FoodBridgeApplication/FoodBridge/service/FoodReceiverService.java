@@ -4,7 +4,6 @@ package com.company.FoodBridgeApplication.FoodBridge.service;
 import com.company.FoodBridgeApplication.FoodBridge.dtos.FoodReceiverDto;
 import com.company.FoodBridgeApplication.FoodBridge.entities.FoodReceiver;
 import com.company.FoodBridgeApplication.FoodBridge.enums.ReceiverType;
-import com.company.FoodBridgeApplication.FoodBridge.exceptions.ResourceNotFoundException;
 import com.company.FoodBridgeApplication.FoodBridge.repository.FoodReceiverRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -37,4 +37,7 @@ public class WebSecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+
+
+
 }

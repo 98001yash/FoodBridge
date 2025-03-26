@@ -27,6 +27,9 @@ public class FoodReceiver {
 
     private String location;
 
+    private Double latitude;
+    private Double longitude;
+
     private String contact;  // Add this field
 
     @Enumerated(EnumType.STRING)

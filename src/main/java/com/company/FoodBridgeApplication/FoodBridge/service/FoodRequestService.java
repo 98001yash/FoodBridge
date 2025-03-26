@@ -6,7 +6,6 @@ import com.company.FoodBridgeApplication.FoodBridge.entities.FoodDonation;
 import com.company.FoodBridgeApplication.FoodBridge.entities.FoodReceiver;
 import com.company.FoodBridgeApplication.FoodBridge.entities.FoodRequest;
 import com.company.FoodBridgeApplication.FoodBridge.enums.RequestStatus;
-import com.company.FoodBridgeApplication.FoodBridge.exceptions.RuntimeConflictException;
 import com.company.FoodBridgeApplication.FoodBridge.repository.FoodDonationRepository;
 import com.company.FoodBridgeApplication.FoodBridge.repository.FoodReceiverRepository;
 import com.company.FoodBridgeApplication.FoodBridge.repository.FoodRequestRepository;
